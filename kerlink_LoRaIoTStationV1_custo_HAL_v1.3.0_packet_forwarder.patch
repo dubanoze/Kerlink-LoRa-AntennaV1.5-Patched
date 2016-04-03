@@ -1,0 +1,138 @@
+From 3b283777fb8edfb8d0dd6e10d72c2b5e970a9c61 Mon Sep 17 00:00:00 2001
+From: John Doe <user@Kerlink-Ubuntu.(none)>
+Date: Wed, 28 May 2014 14:41:42 +0200
+Subject: [PATCH] kerlink_station_v1
+
+---
+ Makefile                                  |    4 ++--
+ beacon_pkt_fwd/cfg/global_conf.cn470.json |    2 +-
+ beacon_pkt_fwd/cfg/global_conf.empty.json |    2 +-
+ beacon_pkt_fwd/cfg/global_conf.eu868.json |    2 +-
+ beacon_pkt_fwd/cfg/global_conf.us915.json |    2 +-
+ gps_pkt_fwd/cfg/global_conf.cn470.json    |    2 +-
+ gps_pkt_fwd/cfg/global_conf.empty.json    |    2 +-
+ gps_pkt_fwd/cfg/global_conf.eu868.json    |    2 +-
+ gps_pkt_fwd/cfg/global_conf.us915.json    |    2 +-
+ 9 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index efd3708..0f42c63 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,7 +1,7 @@
+ ### Environment constants 
+ 
+ LGW_PATH := ../../lora_gateway/libloragw
+-CROSS_COMPILE :=
++CROSS_COMPILE :=/opt/toolchains/arm-2011.03-wirma2/bin/arm-none-linux-gnueabi-
+ export
+ 
+ ### general build targets
+@@ -22,4 +22,4 @@ clean:
+ 	$(MAKE) clean -e -C util_sink
+ 	$(MAKE) clean -e -C util_tx_test
+ 
+-### EOF
+\ No newline at end of file
++### EOF
+diff --git a/beacon_pkt_fwd/cfg/global_conf.cn470.json b/beacon_pkt_fwd/cfg/global_conf.cn470.json
+index 7cb5a59..214d09a 100644
+--- a/beacon_pkt_fwd/cfg/global_conf.cn470.json
++++ b/beacon_pkt_fwd/cfg/global_conf.cn470.json
+@@ -60,6 +60,6 @@
+ 		"forward_crc_error": false,
+ 		"forward_crc_disabled": false,
+ 		/* GPS configuration */
+-		"gps_tty_path": "/dev/ttyACM0"
++		"gps_tty_path": "/dev/nmea"
+ 	}
+ }
+diff --git a/beacon_pkt_fwd/cfg/global_conf.empty.json b/beacon_pkt_fwd/cfg/global_conf.empty.json
+index 6f28527..ed35629 100644
+--- a/beacon_pkt_fwd/cfg/global_conf.empty.json
++++ b/beacon_pkt_fwd/cfg/global_conf.empty.json
+@@ -82,7 +82,7 @@
+ 		// "forward_crc_valid": true,			// configure if certain types of packets are forwarded or ignored
+ 		// "forward_crc_error": false,			// configure if certain types of packets are forwarded or ignored
+ 		// "forward_crc_disabled": false,		// configure if certain types of packets are forwarded or ignored
+-		// "gps_tty_path": "/dev/ttyACM0",		// path to TTY devices configured to receive GPS NMEA frames
++		// "gps_tty_path": "/dev/nmea",		// path to TTY devices configured to receive GPS NMEA frames
+ 		// "ref_latitude": 47.00638,			// reference latitude in degrees (brodcasted in beacons), N is +
+ 		// "ref_longitude": 6.96655,			// reference longitude in degrees (brodcasted in beacons), E is +
+ 		// "ref_altitude": 440,					// reference altitude in meters
+diff --git a/beacon_pkt_fwd/cfg/global_conf.eu868.json b/beacon_pkt_fwd/cfg/global_conf.eu868.json
+index 686ba13..3941843 100644
+--- a/beacon_pkt_fwd/cfg/global_conf.eu868.json
++++ b/beacon_pkt_fwd/cfg/global_conf.eu868.json
+@@ -54,6 +54,6 @@
+ 		"forward_crc_error": false,
+ 		"forward_crc_disabled": false,
+ 		/* GPS configuration */
+-		"gps_tty_path": "/dev/ttyACM0"
++		"gps_tty_path": "/dev/nmea"
+ 	}
+ }
+diff --git a/beacon_pkt_fwd/cfg/global_conf.us915.json b/beacon_pkt_fwd/cfg/global_conf.us915.json
+index 690ed9c..a90e119 100644
+--- a/beacon_pkt_fwd/cfg/global_conf.us915.json
++++ b/beacon_pkt_fwd/cfg/global_conf.us915.json
+@@ -55,6 +55,6 @@
+ 		"forward_crc_error": false,
+ 		"forward_crc_disabled": false,
+ 		/* GPS configuration */
+-		"gps_tty_path": "/dev/ttyACM0"
++		"gps_tty_path": "/dev/nmea"
+ 	}
+ }
+diff --git a/gps_pkt_fwd/cfg/global_conf.cn470.json b/gps_pkt_fwd/cfg/global_conf.cn470.json
+index 7cb5a59..214d09a 100644
+--- a/gps_pkt_fwd/cfg/global_conf.cn470.json
++++ b/gps_pkt_fwd/cfg/global_conf.cn470.json
+@@ -60,6 +60,6 @@
+ 		"forward_crc_error": false,
+ 		"forward_crc_disabled": false,
+ 		/* GPS configuration */
+-		"gps_tty_path": "/dev/ttyACM0"
++		"gps_tty_path": "/dev/nmea"
+ 	}
+ }
+diff --git a/gps_pkt_fwd/cfg/global_conf.empty.json b/gps_pkt_fwd/cfg/global_conf.empty.json
+index a1e1556..85d4ba6 100644
+--- a/gps_pkt_fwd/cfg/global_conf.empty.json
++++ b/gps_pkt_fwd/cfg/global_conf.empty.json
+@@ -82,7 +82,7 @@
+ 		// "forward_crc_valid": true,			// configure if certain types of packets are forwarded or ignored
+ 		// "forward_crc_error": false,			// configure if certain types of packets are forwarded or ignored
+ 		// "forward_crc_disabled": false,		// configure if certain types of packets are forwarded or ignored
+-		// "gps_tty_path": "/dev/ttyACM0",		// path to TTY devices configured to receive GPS NMEA frames
++		// "gps_tty_path": "/dev/nmea",		// path to TTY devices configured to receive GPS NMEA frames
+ 		// "ref_latitude": 47.00638,			// reference latitude in degrees (brodcasted in beacons), N is +
+ 		// "ref_longitude": 6.96655,			// reference longitude in degrees (brodcasted in beacons), E is +
+ 		// "ref_altitude": 440,					// reference altitude in meters
+diff --git a/gps_pkt_fwd/cfg/global_conf.eu868.json b/gps_pkt_fwd/cfg/global_conf.eu868.json
+index 686ba13..3941843 100644
+--- a/gps_pkt_fwd/cfg/global_conf.eu868.json
++++ b/gps_pkt_fwd/cfg/global_conf.eu868.json
+@@ -54,6 +54,6 @@
+ 		"forward_crc_error": false,
+ 		"forward_crc_disabled": false,
+ 		/* GPS configuration */
+-		"gps_tty_path": "/dev/ttyACM0"
++		"gps_tty_path": "/dev/nmea"
+ 	}
+ }
+diff --git a/gps_pkt_fwd/cfg/global_conf.us915.json b/gps_pkt_fwd/cfg/global_conf.us915.json
+index 690ed9c..a90e119 100644
+--- a/gps_pkt_fwd/cfg/global_conf.us915.json
++++ b/gps_pkt_fwd/cfg/global_conf.us915.json
+@@ -55,6 +55,6 @@
+ 		"forward_crc_error": false,
+ 		"forward_crc_disabled": false,
+ 		/* GPS configuration */
+-		"gps_tty_path": "/dev/ttyACM0"
++		"gps_tty_path": "/dev/nmea"
+ 	}
+ }
+-- 
+1.7.5.4
+

@@ -1,0 +1,54 @@
+diff --git a/Makefile b/Makefile
+index 5afee5d..0bbd345 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,6 +1,6 @@
+ ### Environment constants 
+ 
+-CROSS_COMPILE :=
++CROSS_COMPILE :=/opt/toolchains/arm-2011.03-wirma2/bin/arm-none-linux-gnueabi-
+ export
+ 
+ ### general build targets
+@@ -19,4 +19,4 @@ clean:
+ 	$(MAKE) clean -e -C util_spi_stress
+ 	$(MAKE) clean -e -C util_tx_test
+ 
+-### EOF
+\ No newline at end of file
++### EOF
+diff --git a/libloragw/library.cfg b/libloragw/library.cfg
+index 1db5195..395ab78 100644
+--- a/libloragw/library.cfg
++++ b/libloragw/library.cfg
+@@ -5,7 +5,7 @@
+ #	native		Linux native SPI driver (/dev/spidev32766.0)
+ #	ftdi		FTDI SPI-over-USB bridge using libmpsse/libftdi/libusb
+ 
+-CFG_SPI= ftdi
++CFG_SPI= native
+ 
+ ### Concentrator chip ###
+ # Accepted values:
+@@ -43,7 +43,7 @@ CFG_BAND= eu868
+ #	kerlink_868			Kerlink LoRa 868MHz gateway
+ # Keep empty for no calibration parameters (neutral values will be used).
+ 
+-CFG_BRD= ref_1301_868
++CFG_BRD= kerlink_868
+ 
+ ### Network Type ###
+ # Accepted values:
+diff --git a/libloragw/tst/test_loragw_gps.c b/libloragw/tst/test_loragw_gps.c
+index 379bc67..6a2187d 100644
+--- a/libloragw/tst/test_loragw_gps.c
++++ b/libloragw/tst/test_loragw_gps.c
+@@ -98,7 +98,7 @@ int main()
+ 	printf("*** Library version information ***\n%s\n***\n", lgw_version_info());
+ 	
+ 	/* Open and configure GPS */
+-	i = lgw_gps_enable("/dev/ttyACM0", NULL, 0, &gps_tty_dev);
++	i = lgw_gps_enable("/dev/nmea", NULL, 0, &gps_tty_dev);
+ 	if (i != LGW_GPS_SUCCESS) {
+ 		printf("ERROR: IMPOSSIBLE TO ENABLE GPS\n");
+ 		exit(EXIT_FAILURE);
